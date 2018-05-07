@@ -13,7 +13,8 @@ var firstAndPike = {
     cookPerHour: [],
     totalForDay: totalCust * avgCookPerCust,
     display: function render() {
-        var list = document.getElementById('first-and-pike')
+        var list = document.getElementById('first-and-pike');
+        var 
 
     }
 }
