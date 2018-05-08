@@ -42,6 +42,7 @@ firstAndPike.renderList = function () {
 
     for (var h = 0; h < this.cookPerHour.length; h++) {
         var newLi = document.createElement('li');
+        newLi.classList=('nameList');
         newLi.textContent = '' + hours[h] + ': ' + this.cookPerHour[h] + ' cookies';
         list.appendChild(newLi);
         }
@@ -105,6 +106,7 @@ seaTacAirport.renderList = function () {
 
     for (var h = 0; h < this.cookPerHour.length; h++) {
         var newLi = document.createElement('li');
+        newLi.classList=('nameList');
         newLi.textContent = '' + hours[h] + ': ' + this.cookPerHour[h] + ' cookies';
         list.appendChild(newLi);
         }
@@ -169,6 +171,7 @@ seattleCenter.renderList = function () {
 
     for (var h = 0; h < this.cookPerHour.length; h++) {
         var newLi = document.createElement('li');
+        newLi.classList=('nameList');
         newLi.textContent = '' + hours[h] + ': ' + this.cookPerHour[h] + ' cookies';
         list.appendChild(newLi);
         }
@@ -235,6 +238,7 @@ capitolHill.renderList = function () {
 
     for (var h = 0; h < this.cookPerHour.length; h++) {
         var newLi = document.createElement('li');
+        newLi.classList=('nameList');
         newLi.textContent = '' + hours[h] + ': ' + this.cookPerHour[h] + ' cookies';
         list.appendChild(newLi);
         }
@@ -301,6 +305,7 @@ Alki.renderList = function () {
 
     for (var h = 0; h < this.cookPerHour.length; h++) {
         var newLi = document.createElement('li');
+        newLi.classList=('nameList');
         newLi.textContent = '' + hours[h] + ': ' + this.cookPerHour[h] + ' cookies';
         list.appendChild(newLi);
         }
