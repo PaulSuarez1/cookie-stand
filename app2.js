@@ -32,6 +32,13 @@ Store.prototype.header = function () {
     var trEl = document.createElement('tr');
     var thEl = document.createElement('th');
 
+    // thEl.textContent = hours[null];
+    // trEl.appendChild(thEl);
+    // thEl = document.createElement('th');
+
+    trEl.appendChild(thEl);
+    thEl = document.createElement('th');
+
     for(var i in hours) {
         thEl.textContent = hours[i];
     trEl.appendChild(thEl);
@@ -56,13 +63,31 @@ Store.prototype.cookPerHourFunct = function() {
         this.totalForDay += arrayTimesAvg;
         }
     }
-
-// Body of table
-Store.prototype.render = function () {
+//=============================================================
+// Names of the stores (city)
+Store.prototype.renderName = function () {
     this.cookPerHourFunct();
+    
+    var trEl = document.createElement('tr');
+    var tdEl = document.createElement('td');
+    
+    tdEl.textContent = this.name;
+    trEl.appendChild(tdEl);
+    tdEl = document.createElement('td');
+
+    
+    storeTable.appendChild(trEl);
+}
+//=============================================================
+// Body of table (cookies per hour)
+Store.prototype.render = function () {
+    this.renderName();
 
     var trEl = document.createElement('tr');
     var tdEl = document.createElement('td');
+
+    trEl.appendChild(tdEl);
+    tdEl = document.createElement('td');
 
     for(var i in hours) {
         tdEl.textContent = this.cookPerHour[i];
@@ -70,12 +95,29 @@ Store.prototype.render = function () {
         tdEl = document.createElement('td');
     }
 
+
     storeTable.appendChild(trEl);
 }
+//=============================================================
+// Total cookies in the day per store
+Store.prototype.renderTotal = function () {
+    this.render();
+    
+    var trEl = document.createElement('tr');
+    var tdEl = document.createElement('td');
+    
+    tdEl.textContent = this.totalForDay;
+    trEl.appendChild(tdEl);
+    tdEl = document.createElement('td');
+
+    
+    storeTable.appendChild(trEl);
+}
+//=============================================================
 
 function renderAllStores() {
     for (var i in allStores) {
-      allStores[i].render();
+      allStores[i].renderTotal();
     }
   }
 
