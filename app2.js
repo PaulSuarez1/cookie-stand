@@ -18,13 +18,10 @@ function Store(name, minCust, maxCust, totalCust, avgCookPerCust, custPerHour, c
 
 new Store('1st and Pike', 23, 65, 0, 6.3);
 new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
-new Store('SeaTac Airport', 3, 24, 0, 1.2);
+new Store('Seattle Center', 11, 38, 0, 3.7);
+new Store('Capitol Hill', 20, 38, 0, 2.3);
+new Store('Alki', 2, 16, 0, 4.6);
+
 
 // Header of table
 Store.prototype.header = function () {
