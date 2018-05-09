@@ -73,3 +73,16 @@ body {
     border: black 1px dotted;
 
 }
+
+#stores * {
+    font-size: 20px;
+    font-family: 'Fjalla One', sans-serif;
+    color: darkgoldenrod;
+    background-color: lightcyan;
+    /* width: 95%; */
+    text-align: center;
+    margin: 0 auto;
+    border: black 1px dotted;
+
+    padding-bottom: 25px;
+}
