@@ -32,94 +32,68 @@ Store.prototype.header = function () {
     var trEl = document.createElement('tr');
     var thEl = document.createElement('th');
 
-    // thEl.textContent = hours[null];
-    // trEl.appendChild(thEl);
-    // thEl = document.createElement('th');
-
+    thEl.textContent = 'Store Names';
     trEl.appendChild(thEl);
     thEl = document.createElement('th');
 
-    for(var i in hours) {
+    for (var i in hours) {
         thEl.textContent = hours[i];
+        trEl.appendChild(thEl);
+        thEl = document.createElement('th');
+    }
+
+    thEl.textContent = 'Totals for the Day';
     trEl.appendChild(thEl);
     thEl = document.createElement('th');
-    }
 
     storeTable.appendChild(trEl);
-  }
-
-Store.prototype.custPerHourFunct = function() {
-    for ( var i = 0; i < hours.length; i++) {
+}
+// first math function
+Store.prototype.custPerHourFunct = function () {
+    for (var i = 0; i < hours.length; i++) {
         var random = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
         this.custPerHour.push(random);
-        }
     }
-
-Store.prototype.cookPerHourFunct = function() {
+}
+// second math function
+Store.prototype.cookPerHourFunct = function () {
     this.custPerHourFunct();
-    for ( var j = 0; j < hours.length; j++) {
+    for (var j = 0; j < hours.length; j++) {
         var arrayTimesAvg = Math.floor(this.custPerHour[j] * this.avgCookPerCust);
         this.cookPerHour.push(arrayTimesAvg);
         this.totalForDay += arrayTimesAvg;
-        }
     }
-//=============================================================
-// Names of the stores (city)
-Store.prototype.renderName = function () {
+}
+
+// Body of table (cookies per hour)
+Store.prototype.render = function () {
     this.cookPerHourFunct();
-    
+
     var trEl = document.createElement('tr');
     var tdEl = document.createElement('td');
-    
+
     tdEl.textContent = this.name;
     trEl.appendChild(tdEl);
     tdEl = document.createElement('td');
 
-    
-    storeTable.appendChild(trEl);
-}
-//=============================================================
-// Body of table (cookies per hour)
-Store.prototype.render = function () {
-    this.renderName();
-
-    var trEl = document.createElement('tr');
-    var tdEl = document.createElement('td');
-
-    trEl.appendChild(tdEl);
-    tdEl = document.createElement('td');
-
-    for(var i in hours) {
+    for (var i in hours) {
         tdEl.textContent = this.cookPerHour[i];
         trEl.appendChild(tdEl);
         tdEl = document.createElement('td');
     }
 
-
-    storeTable.appendChild(trEl);
-}
-//=============================================================
-// Total cookies in the day per store
-Store.prototype.renderTotal = function () {
-    this.render();
-    
-    var trEl = document.createElement('tr');
-    var tdEl = document.createElement('td');
-    
     tdEl.textContent = this.totalForDay;
     trEl.appendChild(tdEl);
     tdEl = document.createElement('td');
 
-    
     storeTable.appendChild(trEl);
 }
-//=============================================================
 
 function renderAllStores() {
     for (var i in allStores) {
-      allStores[i].renderTotal();
+        allStores[i].render();
     }
-  }
+}
 
 Store.prototype.header();
 renderAllStores();
