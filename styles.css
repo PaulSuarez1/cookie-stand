@@ -94,3 +94,20 @@ body {
     margin: 0 auto;
    
 }
+#storeForm {
+    background-color: lightcyan;
+    width: 75%;
+    margin: 25px auto;
+    padding: 1%;
+}
+
+#clearStoreTable {
+    background-color: lightcyan;
+    margin: 0 auto;
+}
+
+#storeTable {
+    background-color: lightcyan;
+    margin: 0 auto;
+    width: 75%;
+}
