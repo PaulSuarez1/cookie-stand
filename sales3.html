@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="nav">
+                <a href="/index.html">Home!</a>
+            </li>
+
+            <li class="nav">
+                <a href="/sales3.html">Form!</a>
+            </li>
+        </ul>
+    </nav>
+    <h1 id="title">Pat's Salmon Cookies</h1>
+    <img id="fish" src="img/salmon.png">
+
+    <!-- <element id="totalName"> -->
+
+    <form id="storeForm">
+        <fieldset>
+            <legend>Store submission form</legend>
+
+            <label for="name">Store Name: </label>
+            <input name="name" type="text" size="20" />
+
+            <label for="maxCust">Maximum Customers: </label>
+            <input name="maxCust" type="text" size="20" />
+
+            <label for="minCust">Minimum Customers: </label>
+            <input name="minCust" type="text" size="20" />
+
+            <label for="avgCookPerCust">Average Cookies per Customer: </label>
+            <input name="avgCookPerCust" type="text" size="20" />
+
+            <button type="submit">Create new store!</button>
+        </fieldset>
+    </form>
+
+    <table id="storeTable"></table>
+
+    <script src="app2.js"></script>
+</body>
+
+</html>
