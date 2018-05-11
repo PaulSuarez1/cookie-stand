@@ -15,14 +15,16 @@ function Store(name, minCust, maxCust, avgCookPerCust, totalCust, custPerHour, c
     this.custPerHour = [];
     this.cookPerHour = [];
     this.totalForDay = 0;
-    allStores.push(this);
+    allStores.unshift(this);
 }
+
 
 new Store('1st and Pike', 23, 65, 6.3);
 new Store('SeaTac Airport', 3, 24, 1.2);
 new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
+
 
 
 // Header of table
@@ -85,18 +87,49 @@ Store.prototype.render = function () {
     trEl.appendChild(tdEl);
     tdEl = document.createElement('td');
 
+    //========================================
+    Store.prototype.footer = function () {
+        var trEl2 = document.createElement('tr');
+        var thEl2 = document.createElement('th');
+
+        thEl2.textContent = 'Total for each hour ->';
+        trEl2.appendChild(thEl2);
+        thEl2 = document.createElement('th');
+
+        for (var j in allStores[0].cookPerHour) {
+            thEl2.textContent = allStores[0].cookPerHour[j];
+            trEl2.appendChild(thEl2);
+            thEl2 = document.createElement('th');
+        }
+
+        thEl2.textContent = '<- Total for each hour';
+        trEl2.appendChild(thEl2);
+        thEl2 = document.createElement('th');
+
+        storeTable.appendChild(trEl2);
+    }
+    //========================================
+
+
     storeTable.appendChild(trEl);
 }
 
 function renderAllStores() {
+    storeTable.innerHTML = '';
+    Store.prototype.header();
+    console.table(allStores);
+
     for (var i in allStores) {
         allStores[i].render();
     }
 }
 
-Store.prototype.header();
 renderAllStores();
+
+Store.prototype.footer();
+
 console.table(allStores);
+
 
 
 //===================================================
@@ -121,60 +154,10 @@ function handleStoreSubmit(event) {
 
     var newStore = new Store(newName, newMin, newMax, newAvg);
 
+    renderAllStores();
 
-    var custPerHourFunct = function () {
-        for (var i = 0; i < hours.length; i++) {
-            var random = Math.floor(Math.random() * (newStore.maxCust - newStore.minCust + 1)) + newStore.minCust;
-            newStore.custPerHour.push(random);
-            console.log(random);
-        }
-    }
-    // second math function
-    var cookPerHourFunct = function () {
-        newStore.custPerHourFunct();
-        for (var j = 0; j < hours.length; j++) {
-            var arrayTimesAvg = Math.floor(newStore.custPerHour[j] * newStore.avgCookPerCust);
-            newStore.cookPerHour.push(arrayTimesAvg);
-            newStore.totalForDay += arrayTimesAvg;
-        }
-    }
-
-    // Body of table (cookies per hour)
-    var render = function () {
-        newStore.cookPerHourFunct();
-
-        var trEl = document.createElement('tr');
-        var tdEl = document.createElement('td');
-
-        tdEl.textContent = newStore.name;
-        trEl.appendChild(tdEl);
-        tdEl = document.createElement('td');
-
-        for (var i in hours) {
-            tdEl.textContent = newStore.cookPerHour[i];
-            trEl.appendChild(tdEl);
-            tdEl = document.createElement('td');
-        }
-
-        tdEl.textContent = newStore.totalForDay;
-        trEl.appendChild(tdEl);
-        tdEl = document.createElement('td');
-
-        storeTable.appendChild(trEl);
-    }
-
-    render();
-
-    allStores.unshift(newStore);
-
-
+    Store.prototype.footer();
 }
 
 storeForm.addEventListener('submit', handleStoreSubmit);
-
-
-
-
-
-
 console.table(allStores);
